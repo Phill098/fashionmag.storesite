@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashion-Mag</title>
+  <link rel="stylesheet" href="sign-style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script>
+    var firebaseConfig = {
+    apiKey: "AIzaSyC8vejRkvQqVZ3X66oqqYlSPAdcZ-mYfq8",
+    authDomain: "fashoin-mag-com.firebaseapp.com",
+    projectId: "fashoin-mag-com",
+    storageBucket: "fashoin-mag-com.appspot.com",
+    messagingSenderId: "832458066292",
+    appId: "1:832458066292:web:5782b1beaeca5ba5690421",
+    measurementId: "G-BSZLJ23Z5N"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    function signUp() {
+      var email = document.getElementById('signUpEmail').value;
+      var password = document.getElementById('signUpPassword').value;
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          window.location = 'index.html';
+        })
+        .catch((error) => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          alert(errorMessage);
+        });
+    }
+
+    function signIn() {
+      var email = document.getElementById('signInEmail').value;
+      var password = document.getElementById('signInPassword').value;
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          window.location = 'index.html';
+        })
+        .catch((error) => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          alert(errorMessage);
+        });
+    }
+
+    function toggleForm() {
+      var container = document.getElementById('container');
+      container.classList.toggle('right-panel-active');
+    }
+  </script>
+</head>
+<body>
+</div>
+  <div class="container" id="container">
+    <div class="form-container sign-up-container">
+      <form onsubmit="signUp(); return false;">
+        <h1>Create Account</h1>
+        <div class="social-icons">
+          <a href="#" class="icon"><img src="imgs/install/facebook.png" alt="" class="ficon"></a>
+          <a href="#" class="icon"><img src="imgs/install/whatsapp.png" alt="" class="ficon"></a>
+          <a href="#" class="icon"><img src="imgs/install/twitter.png" alt="" class="ficon"></a>
+          <a href="#" class="icon"><img src="imgs/install/instagram.png" alt="" class="ficon"></a>
+        </div>
+        <span>or use your email for registration</span>
+        <input type="text" placeholder="Name" id="signUpName">
+        <input type="email" placeholder="Email" id="signUpEmail">
+        <input type="password" placeholder="Password" id="signUpPassword">
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+    <div class="form-container sign-in-container">
+      <form onsubmit="signIn(); return false;">
+        <h1>Sign In</h1>
+        <div class="social-icons">
+          <a href="#" class="icon"><img src="imgs/install/facebook.png" alt="" class="ficon"></a>
+          <a href="#" class="icon"><img src="imgs/install/whatsapp.png" alt="" class="ficon"></a>
+          <a href="#" class="icon"><img src="imgs/install/twitter.png" alt="" class="ficon"></a>
+          <a href="#" class="icon"><img src="imgs/install/instagram.png" alt="" class="ficon"></a>
+        </div>
+        <span>or use your email for login</span>
+        <input type="email" placeholder="Email" id="signInEmail">
+        <input type="password" placeholder="Password" id="signInPassword">
+        <a href="#" style="color: #fff;">Forgot your Password?</a>
+        <button type="submit">Sign In</button>
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h1>Welcome Back!</h1>
+          <p>To keep connected with us please login</p>
+          <button class="ghost" id="signIn" onclick="toggleForm()">Sign In</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h1>Hello, Friend!</h1>
+          <p>Enter your personal details and start </p>
+          <button class="ghost" id="signUp" onclick="toggleForm()">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+  <script src="script.js"></script>  
+</body>
+</html>
